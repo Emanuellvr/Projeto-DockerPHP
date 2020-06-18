@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'Inventário',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -45,12 +45,12 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
-    'logo_img_class' => 'brand-image img-circle elevation-3',
+    'logo' => '<b>Inventário</b>',
+    'logo_img' => '',
+    'logo_img_class' => 'fa fa-archive',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'AdminLTE',
+    'logo_img_alt' => '',
 
     /*
     |--------------------------------------------------------------------------
@@ -208,26 +208,37 @@ return [
     */
 
     'menu' => [
+        /*
         [
-            'text' => 'search',
+            'text' => 'Pesquisar',
             'search' => true,
             'topnav' => true,
         ],
+        */
         [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'text'        => 'Página Principal',
+            'url'         => 'home',
+            'icon'        => 'fa fa-home',
         ],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'text'        => 'Adicionar item',
+            'url'         => 'add',
+            'icon'        => 'fa fa-plus',
+        ],
+        /*
+        [
+            'text'        => 'Editar item',
+            'url'         => 'edit',
+            'icon'        => 'fa fa-outdent',
+        ],
+        [
+            'text'        => 'Remover item',
+            'url'         => 'remove',
+            'icon'        => 'fa fa-trash',
         ],
         ['header' => 'account_settings'],
         [
-            'text' => 'profile',
+            'text' => 'Perfil',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
         ],
@@ -236,6 +247,7 @@ return [
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],
+        
         [
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',
@@ -274,6 +286,7 @@ return [
                 ],
             ],
         ],
+        
         ['header' => 'labels'],
         [
             'text'       => 'important',
@@ -287,6 +300,7 @@ return [
             'text'       => 'information',
             'icon_color' => 'cyan',
         ],
+        */
     ],
 
     /*

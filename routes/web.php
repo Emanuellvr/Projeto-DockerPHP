@@ -14,12 +14,20 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'Site\SiteController@index')->name('welcome');
+
+Route::get('/add', 'Admin\InventController@index')->name('adicionar');
+
+Route::post('/add', 'Admin\InventController@add')->name('add');
+
+Route::get('/edit/{id}', 'Admin\InventController@edit')->name('edit');
+
+Route::post('/update/{id}', 'Admin\InventController@updateItem')->name('update');
+
+Route::post('/delete/{id}', 'Admin\InventController@delete')->name('delete');
+
+Route::post('/serach', 'Admin\InventController@search')->name('search');
 
 Auth::routes();
 
-Route::get('/home', function() {
-    return view('home');
-})->name('home')->middleware('auth');
+Route::get('/home', 'Admin\AdminController@index')->name('home')->middleware('auth');
