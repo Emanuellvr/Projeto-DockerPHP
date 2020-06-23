@@ -20,6 +20,8 @@ class CreateItemsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('amount')->unsigned();
             $table->string('description')->nullable();
+            $table->bigInteger('type_id')->unsigned();
+            $table->foreign('type_id')->references('id')->on('type_items')->onDelete('cascade');
         });
     }
 

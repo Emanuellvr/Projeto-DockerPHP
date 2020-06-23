@@ -40,6 +40,7 @@
             <th>Nome</th>
             <th>Quantidade</th>
             <th>Descrição</th>            
+            <th>Tipo</th>   
           </tr>
         </thead>
         <tbody>
@@ -49,21 +50,24 @@
               <td>{{ $item->id }}</td>
               <td>{{ $item->name }}</td>
               <td>{{ $item->amount }}</td>
-              <td>{{ $item->description }}</td>
+              <td>{{ $item->description }}</td>              
+              <td>{{ $types[($item->type_id)-1]->name  }}</td>  <!-- (-1 pois o array começa em 0) -->
 
-              <td>
-                <a href="{{ action('Admin\InventController@edit',  ['id' => $item->id]) }}" 
-                  class="btn btn-warning fas fa-edit float-right"> Editar</a>
-              </td>
+              <div class="input-group input-group-sm" style="width: 150px;">
+                <td>
+                  <a href="{{ action('Admin\InventController@edit',  ['id' => $item->id]) }}" 
+                    class="btn btn-warning fas fa-edit float-right ml-2"> Editar
+                  </a>
 
-              <td>
-                <form method="post" class="delete_form" action="{{ action('Admin\InventController@delete', ['id' => $item->id]) }}">
-                  {!! csrf_field() !!} 
-                  <button type="submit" class="btn btn-danger fas fa-trash-alt float-right" 
-                          onclick="return confirm('Tem certeza que deseja deletar?')"> Deletar
-                  </button>
-                </form>                 
-              </td>
+                  <form method="post" class="delete_form" action="{{ action('Admin\InventController@delete', ['id' => $item->id]) }}">
+                    {!! csrf_field() !!} 
+                    <button type="submit" class="btn btn-danger fas fa-trash-alt float-right" 
+                            onclick="return confirm('Tem certeza que deseja deletar?')"> Deletar
+                    </button>
+                  </form> 
+
+                </td>
+              </div>
               
             </tr>
           @empty

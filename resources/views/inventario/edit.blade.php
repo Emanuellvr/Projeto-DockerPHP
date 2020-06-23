@@ -33,6 +33,16 @@
                             <label for="exampleInputAmount">Descrição</label>
                             <input type="text" name="description" class="form-control" id="exampleInputAmount" value="{{ $item->description }}">
                           </div>
+
+                          <div class="form-group">
+                            <label>Selecione o tipo do item</label>
+                            <select class="form-control" name="Type">
+                              @forelse ($types as $type)
+                                <option>{{ $type->name }}</option>
+                              @empty
+                              @endforelse                          
+                            </select>
+                          </div>  
                           
                                 
                           <button type="submit" class="btn btn-primary">Salvar Alteração</button>

@@ -26,7 +26,9 @@ Route::post('/update/{id}', 'Admin\InventController@updateItem')->name('update')
 
 Route::post('/delete/{id}', 'Admin\InventController@delete')->name('delete');
 
-Route::post('/serach', 'Admin\InventController@search')->name('search');
+Route::post('/search', 'Admin\InventController@search')->name('search');
+
+Route::post('/addType', 'Admin\InventController@addType')->name('addType');
 
 Auth::routes();
 
