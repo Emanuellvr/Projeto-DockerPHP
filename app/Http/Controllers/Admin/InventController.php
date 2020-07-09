@@ -23,7 +23,7 @@ class InventController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth:admin');
     }    
 
     public function index(){
@@ -42,11 +42,11 @@ class InventController extends Controller
         $Collectiontype = TypeItem::where('name', 'LIKE', '%'.Request()->Type.'%')->get();
         $type = $Collectiontype->get('0');
         
-        $item->add(Request()->name, Request()->amount, Request()->description, $type->id, auth()->user()->id);
+        $item->add($request->name, $type->id, $request->price);
                 
 
         return redirect()
-                ->route('adicionar')
+                ->route('admin.home')
                 ->with('success', 'Adicionado com sucesso');
     }
 
@@ -64,14 +64,13 @@ class InventController extends Controller
         $Collectiontype = TypeItem::where('name', 'LIKE', '%'.$request->Type.'%')->get();        
         $type = $Collectiontype->get('0');            
         
-        $item->name = $request->get('name');
-        $item->amount = $request->get('amount');
-        $item->description = $request->get('description');
+        $item->name = $request->get('name');                
         $item->type_id = $type->id;        
+        $item->price = $request->get('price');  
         $item->save();
 
         return redirect()
-                    ->route('home')
+                    ->route('admin.home')
                     ->with('success', 'Alterado com Sucesso');
     }
 
@@ -80,55 +79,10 @@ class InventController extends Controller
         $item->delete();
 
         return redirect()
-                    ->route('home')
+                    ->route('admin.home')
                     ->with('success', 'Deletado com sucesso');
     }
-
-    public function search(Request $request){
-        $search = $request->get('table_search');  
-
-        // Se não especificar nada, $search recebe um astring aletoria para não retornar nada
-        if($search == null)                   
-            $search = "999#~;.";
-        
-        // Procura itens por seu nome
-        $items = Item::where('name', 'LIKE', '%'.$search.'%')->get();
-        
-        // Procura TipoItem pelo nome
-        $collection = TypeItem::where('name', 'LIKE', '%'.$search.'%')->get();  
-                
-        if($collection->get('0') != null) {
-            
-            $type = $collection->get('0');  // Pegar o objeto do tipo TypeItem da collection                
-
-            // Pesquisa os itens que tem o id do objeto $type
-            $itemByType = Item::where('type_id', $type->id)->get();
-            
-            // $collection é um auxiliar que recebe uma collection com os itens de $itemByType
-            $collection->add($itemByType);
-            
-            // Quantidade de intens no array da collection
-            $qtdDeItensPortipo = count($collection->get('1')); 
-
-            // Adiciona cada item à collection $items criada no inicio do método
-            for ($i=0; $i < $qtdDeItensPortipo; $i++) { 
-                $items->add($collection->get('1')->get($i)); //
-            }
-        }                          
-
-        $types = TypeItem::get();
-
-        if(count($items)>0)
-            return view('home', compact('items', 'types'))->withQuery($search);
-        else
-        {
-            $items = auth()->user()->item;  
-            $types = TypeItem::get(); 
-            return redirect() 
-                    ->route('home', compact('items', 'types'))
-                    ->with('warning', 'Nada encontrado. Tente pesquisa novamente !');
-        }            
-    }
+    
 
     public function addType(TypeItem $TypeItem){
 

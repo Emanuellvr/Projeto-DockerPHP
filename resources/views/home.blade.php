@@ -3,7 +3,7 @@
 @section('title', 'Inventário')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Lista de itens cadastrados</h1>
+    <h1 class="m-0 text-dark">Lista de Produtos</h1>
 @stop
 
 @section('content')
@@ -16,7 +16,7 @@
       
       <div class="card-tools">
 
-        <form action="{{ action('Admin\InventController@search') }}" method="POST" role="search">
+        <form action="{{ route('search') }}" method="POST" role="search">
           {!! csrf_field() !!}
 
           <div class="input-group input-group-sm" style="width: 150px;">                                  
@@ -33,46 +33,38 @@
       <!-- /.card-header -->
 
     <div class="card-body table-responsive p-0">
-      <table class="table table-hover text-nowrap">
+      <table class="table text-nowrap">
         <thead>
           <tr>          
             <th>ID</th>
-            <th>Nome</th>
-            <th>Quantidade</th>
-            <th>Descrição</th>            
-            <th>Tipo</th>   
+            <th>Nome</th>                                
+            <th>Tipo</th>  
+            <th>Preço</th> 
+            <th>Adcionar ao carrinho</th> 
           </tr>
         </thead>
+
         <tbody>
-
+       
           @forelse ($items as $item)
-            <tr>              
-              <td>{{ $item->id }}</td>
-              <td>{{ $item->name }}</td>
-              <td>{{ $item->amount }}</td>
-              <td>{{ $item->description }}</td>              
-              <td>{{ $types[($item->type_id)-1]->name  }}</td>  <!-- (-1 pois o array começa em 0) -->
-
-              <div class="input-group input-group-sm" style="width: 150px;">
-                <td>
-                  <a href="{{ action('Admin\InventController@edit',  ['id' => $item->id]) }}" 
-                    class="btn btn-warning fas fa-edit float-right ml-2"> Editar
-                  </a>
-
-                  <form method="post" class="delete_form" action="{{ action('Admin\InventController@delete', ['id' => $item->id]) }}">
-                    {!! csrf_field() !!} 
-                    <button type="submit" class="btn btn-danger fas fa-trash-alt float-right" 
-                            onclick="return confirm('Tem certeza que deseja deletar?')"> Deletar
-                    </button>
-                  </form> 
-
-                </td>
-              </div>
-              
-            </tr>
+          <tr>              
+            <td>{{ $item->id }}</td>
+            <td>{{ $item->name }}</td>                                          
+            <td>{{ $types[($item->type_id)-1]->name  }}</td>  <!-- (-1 pois o array começa em 0) -->
+            
+            <td>R$ {{ money_format('%.2n', $item->price) }}</td>
+            
+            <td>
+              <form method="post" action="{{ route('cart.add', $item->id) }}">
+                {!! csrf_field() !!} 
+                <button type="submit" class=" fas fa-cart-plus"></button>
+              </form>                                    
+            </td>              
+                          
+          </tr>
           @empty
           @endforelse  
-
+          
         </tbody>
       </table>
     </div>
@@ -80,3 +72,4 @@
   </div>
                 
 @stop
+

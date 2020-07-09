@@ -14,17 +14,15 @@ class Item extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'amount', 'user_id', 'description', 'type_id',
+        'name', 'amount', 'user_id', 'price', 'type_id',
     ];
 
-    public function add($name, $amount, $description, $type, $idUser){                
+    public function add($name, $type, $price){                
 
         Item::create([
-            'name'          => $name,
-            'user_id'       => $idUser,
-            'amount'        => $amount,
-            'description'   => $description,                         
+            'name'      => $name,                                                           
             'type_id'   => $type,
+            'price'     => $price,
         ]);
     }
 

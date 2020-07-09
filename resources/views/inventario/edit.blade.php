@@ -24,15 +24,10 @@
                           </div>
 
                           <div class="form-group">
-                            <label for="exampleInputAmount">Quantidade</label>
-                            <input type="amount" name="amount" class="form-control" id="exampleInputAmount" value="{{ $item->amount }}">
+                            <label for="exampleInputAmount">Preço R$</label>
+                            <input type="amount" name="price" class="form-control" id="exampleInputAmount" value="{{ $item->price }}">
                           </div>
-                          
-                                                    
-                          <div class="form-group">
-                            <label for="exampleInputAmount">Descrição</label>
-                            <input type="text" name="description" class="form-control" id="exampleInputAmount" value="{{ $item->description }}">
-                          </div>
+                                                                            
 
                           <div class="form-group">
                             <label>Selecione o tipo do item</label>

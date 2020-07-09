@@ -25,16 +25,16 @@ class ItemValidationFormRequest extends FormRequest
     {
         return [
             'name' =>'required',
-            'amount' => 'required | numeric'
+            'price' => 'required | numeric'
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' =>'Nome é obrigatório',
-            'amount.required' => 'Quantidade é obrigatória',
-            'amount.numeric' => 'Quantidade é um campo numérico'
+            'name.required' =>'Nome é obrigatório',            
+            'price.double' => 'Preço é um campo numérico decimal',
+            'price.required' => 'Preço é um campo obrigatório',
         ];
     }
 }

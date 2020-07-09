@@ -17,7 +17,13 @@ class TypeItemsTableSeeder extends Seeder
             'name'          => 'Escritório',
         ]);
         TypeItem::create([
-            'name'          => 'Escolar',
+            'name'          => 'Ferramentas',
+        ]);
+        TypeItem::create([
+            'name'          => 'Feira',
+        ]);        
+        TypeItem::create([
+            'name'          => 'Material de limpeza',
         ]);
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Admin;
+
 return [
 
     /*
@@ -217,13 +219,20 @@ return [
         */
         [
             'text'        => 'Página Principal',
-            'url'         => 'home',
+            'url'         => '',
             'icon'        => 'fa fa-home',
         ],
         [
             'text'        => 'Adicionar item',
             'url'         => 'add',
-            'icon'        => 'fa fa-plus',
+            'icon'        => 'fa fa-plus', 
+            'can'         => 'only-admin',                       
+        ],
+        [
+            'text'        => 'Carrinho',
+            'url'         => 'cart',
+            'icon'        => 'fa fa-shopping-cart', 
+            'can'         => 'no-admin',                    
         ],
         /*
         [
@@ -236,18 +245,24 @@ return [
             'url'         => 'remove',
             'icon'        => 'fa fa-trash',
         ],
+        */
         ['header' => 'account_settings'],
         [
-            'text' => 'Perfil',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'text' => 'Login',
+            'url'  => 'login',
+            'icon' => 'fas fa-fw fa-user',            
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'Cadastro',
+            'url'  => 'register',
+            'icon' => 'fas fa-user-plus',            
         ],
-        
+        [
+            'text' => 'Administrador',
+            'url'  => 'admin/login',
+            'icon' => 'fas fa-fw fa-lock',
+        ],        
+        /*
         [
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',
@@ -301,7 +316,7 @@ return [
             'icon_color' => 'cyan',
         ],
         */
-    ],
+    ],    
 
     /*
     |--------------------------------------------------------------------------

@@ -21,17 +21,11 @@
                       <div class="form-group">
                         <label for="exampleInputName">Nome</label>
                         <input type="name" name="name" class="form-control" id="exampleInputName" placeholder="Nome do item">
-                      </div>
-
-                      <div class="form-group">
-                        <label for="exampleInputAmount">Quantidade</label>
-                        <input type="amount" name="amount" class="form-control" id="exampleInputAmount" placeholder="Quantidade do item">
-                      </div>       
-                      
+                      </div>                                            
                                                 
                       <div class="form-group">
-                        <label>Descrição</label>
-                        <input type="text" class="form-control" name="description" id="exampleInputDescription" placeholder="Descrição do item"></input>
+                        <label>Preço</label>
+                        <input type="text" class="form-control" name="price" id="exampleInputDescription" placeholder="Descrição do item"></input>
                       </div>
 
                       <div class="form-group">
