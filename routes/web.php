@@ -43,3 +43,6 @@ Route::get('/admin', 'Admin\AdminController@home')->name('admin.home');
 
 Route::get('/admin/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
 Route::get('/logout', 'Auth\LoginController@userLogout')->name('logout');
+
+Route::get('/admin/relatorio', 'Admin\PDFController@generatePDF')->name('relatorio');
+Route::get('/admin/relatorioshow', 'Admin\PDFController@relatorio')->name('relatorio.show');

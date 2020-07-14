@@ -234,6 +234,12 @@ return [
             'icon'        => 'fa fa-shopping-cart', 
             'can'         => 'no-admin',                    
         ],
+        [
+            'text'        => 'Relatório',
+            'url'         => '/admin/relatorio',
+            'icon'        => 'fas fa-chart-pie', 
+            'can'         => 'only-admin',                    
+        ],
         /*
         [
             'text'        => 'Editar item',

@@ -25,7 +25,7 @@
                                                 
                       <div class="form-group">
                         <label>Preço</label>
-                        <input type="text" class="form-control" name="price" id="exampleInputDescription" placeholder="Descrição do item"></input>
+                        <input type="text" class="form-control" name="price" id="exampleInputDescription" placeholder="Preço do item"></input>
                       </div>
 
                       <div class="form-group">
